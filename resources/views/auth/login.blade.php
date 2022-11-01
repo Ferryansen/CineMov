@@ -1,4 +1,5 @@
 @extends('layout')
+
 <style>
     .login-card {
         padding: 48px 32px;
@@ -17,6 +18,7 @@
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 217, 0, 0.6) !important;
     }
 </style>
+
 @section('content')
     <div class="d-flex justify-content-center mt-5">
         <div class="row login-card">
@@ -68,7 +70,7 @@
                             <input type="checkbox" name="remember" value="remember-me"> Remember me
                         </label>
                     </div>
-                    <button class="w-100 btn btn-sm btn-warning" type="submit">Sign In</button>
+                    <button class="w-100 btn btn-md btn-warning" type="submit">Sign In</button>
                     <div class="mt-4">
                         <small class="text-white">Don&apos;t have an account ? <a href="/register" class="text-warning">Sign
                                 Up</a></small>

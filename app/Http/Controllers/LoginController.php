@@ -29,7 +29,7 @@ class LoginController extends Controller
             if (auth()->user()->role === 'admin') {
                 return redirect()->intended('admin/home');
             }
-            return redirect()->intended('user/home');
+            return redirect()->intended('home');
         }
 
         return back()->with('loginFailed', 'Invalid credentials.');

@@ -18,7 +18,7 @@ class IsAdmin
     {
         if (!auth()->check() || auth()->user()->role !== 'admin') {
             if (auth()->check() && auth()->user()->role === 'user') {
-                return redirect()->intended('user/home');
+                return redirect()->intended('home');
             }
             return redirect()->intended('login');
         }

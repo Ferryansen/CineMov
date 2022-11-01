@@ -19,14 +19,11 @@ class RegisterController extends Controller
         $newUser = $request->validate([
             'name' => ['required', 'min:5'],
             'email' => ['required', 'email:dns', 'unique:users'],
-            'password' => ['required', 'min:8', 'alpha_num', 'confirmed'],
-            'gender' => ['required', 'in:Male,Female'],
-            'dob' => ['required', 'before:today', 'after:01-01-1900'],
-            'country' => ['required']
+            'password' => ['required', 'min:8', 'alpha_num', 'confirmed']
         ]);
 
         $newUser['password'] = Hash::make($newUser['password']);
-        $newUser['role'] = 'customer';
+        $newUser['role'] = 'user';
 
         User::create($newUser);
         return redirect('/login')->with('registerSuccess', 'Registration succesful');

@@ -32,6 +32,9 @@ Route::get('admin/home', function () {
 })->middleware('admin');
 
 // User
-Route::get('/home', function () {
-    return view('user.home');
-})->middleware('user');
+Route::middleware('user')->group(function() {
+    Route::get('/home', function () {
+        return view('user.home');
+    });
+
+});

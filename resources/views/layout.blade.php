@@ -19,6 +19,9 @@
             height: 100vh;
         }
     </style>
+
+    {{-- extra styling per page --}}
+    @yield('styling')
 </head>
 
 <body>

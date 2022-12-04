@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +35,6 @@ Route::get('admin/home', function () {
 
 // User
 Route::middleware('user')->group(function() {
-    Route::get('/home', function () {
-        return view('user.home');
-    });
-
+    Route::get('/home', [MovieController::class, 'index']);
+    Route::get('/search', [MovieController::class, 'index']);
 });

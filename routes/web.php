@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisterController;
@@ -37,4 +38,11 @@ Route::get('admin/home', function () {
 Route::middleware('user')->group(function() {
     Route::get('/home', [MovieController::class, 'index']);
     Route::get('/search', [MovieController::class, 'index']);
+    
+    Route::prefix('/movie')->group(function() {
+        Route::get('/{movie_id}', [MovieController::class, 'movieDetail']);
+        Route::post('/{movie_id}/comment', [CommentController::class, 'store'])->name('comment.store');
+        Route::patch('/comment/{comment_id}', [CommentController::class, 'update'])->name('comment.update');
+        Route::delete('/comment/{comment_id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+    });
 });

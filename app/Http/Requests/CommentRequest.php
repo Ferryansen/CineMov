@@ -13,7 +13,7 @@ class CommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rating' => 'required',
+            'description' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'rating.required' => 'please rate this movie',
+            'description.required' => 'please tell us more about this movie',
         ];
     }
 }

@@ -32,6 +32,18 @@ class MovieController extends Controller
         return view('user.home', $data);
     }
 
+    public function movieDetail($movie_id) {
+        $movie = Movie::findOrFail($movie_id);
+        $curr_user = auth()->user()->id;
+
+        $data = [
+            'movie' => $movie,
+            'currUser' => $curr_user
+        ];
+
+        return view('user.movie-detail', $data);
+    }
+
     // public function search(Request $req)
     // {
     //     $movie = Movie::where('title', 'like', '%'.$req->q.'%')->paginate(8);

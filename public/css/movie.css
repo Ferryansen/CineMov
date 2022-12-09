@@ -1,0 +1,31 @@
+
+/* Ini buat form comment */
+#titleModal {
+    text-align: center;
+    color: #f3f3f3;
+
+    margin-bottom: 15px;
+}
+
+.modal-content {
+    padding: 36px 32px;
+    background: rgba(255, 255, 255, 0.192);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(43, 43, 43, 0.568);
+}
+
+.form-control{
+    border-color: #ffbb00 !important;
+}
+
+.form-control:focus{
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 217, 0, 0.6) !important;
+}
+
+#rating {
+    height: 55px;
+}
+
+#floatingTextarea {
+    height: 180px;
+}

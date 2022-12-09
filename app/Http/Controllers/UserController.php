@@ -2,47 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
 use Illuminate\Http\Request;
 
-class MovieController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $req)
+    public function index()
     {
-        if($req->q == null){
-            $movie = Movie::paginate(8);
-            $showBanner = true;
-        } else{
-            $movie = Movie::where('title', 'like', '%'.$req->q.'%')->paginate(8);
-            $showBanner = false;
-        }
-        $banner = Movie::latest()->take(3)->get();
-
-        $data = [
-            'movie' => $movie,
-            'banner' => $banner,
-            'showBanner' => $showBanner
-        ];
-
-        return view('user.home', $data);
+        return view('user.home');
     }
-
-    // public function search(Request $req)
-    // {
-    //     $movie = Movie::where('title', 'like', '%'.$req->q.'%')->paginate(8);
-
-    //     $data = [
-    //         'movie' => $movie,
-    //         'showBanner' => false
-    //     ];
-
-    //     return view('user.home', $data);
-    // }
 
     /**
      * Show the form for creating a new resource.

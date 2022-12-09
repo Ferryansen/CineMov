@@ -9,6 +9,10 @@ class Movie extends Model
 {
     use HasFactory;
 
+    public function genres(){
+        return $this->belongsToMany(Genre::class);
+    }
+
     public function comments() {
         return $this->hasMany(Comment::class);
     }

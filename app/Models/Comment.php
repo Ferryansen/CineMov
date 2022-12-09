@@ -14,10 +14,10 @@ class Comment extends Model
     ];
 
     public function user() {
-        return $this->belongsTo('App\Models\User', 'userId');
+        return $this->belongsTo(User::class);
     }
 
     public function movie() {
-        return $this->belongsTo('App\Models\Movie', 'movieId');
+        return $this->belongsTo(Movie::class);
     }
 }

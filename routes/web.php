@@ -30,9 +30,19 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
 
 // Admin
-Route::get('admin/home', function () {
-    return view('admin.home');
-})->middleware('admin');
+Route::middleware('admin')->group(function(){
+
+    Route::prefix('/admin')->group(function(){
+        Route::get('/home', function(){return view('admin.home');})->name('admin.home');
+        Route::get('/view', [MovieController::class, 'indexAdmin'])->name('admin.view');
+        Route::get('/add', function(){return view('admin.add');})->name('admin.add');
+        Route::post('/createMovie', [MovieController::class, 'addMovie'])->name('admin.createMovie');
+        Route::get('/search', [MovieController::class, 'indexAdmin'])->name('admin.search');
+        Route::get('/update/{id}' , [MovieController::class , 'updateMovieForm'])->name('admin.update');
+        Route::patch('/updating/{id}' , [MovieController::class , 'updateMovieLogic'])->name('admin.updating');
+        Route::delete('/delete/{id}', [MovieController::class, 'deleteMovie'])->name('admin.delete');
+    });
+});
 
 // User
 Route::middleware('user')->group(function() {

@@ -1,0 +1,157 @@
+* {
+    margin: 0%;
+    font-family: Gilroy, sans-serif;
+    src : url(../gilroy-font/Gilroy-Bold.ttf);
+    src : url(../gilroy-font/Gilroy-Heavy.ttf);
+    src : url(../gilroy-font/Gilroy-Light.ttf);
+    src : url(../gilroy-font/Gilroy-Medium.ttf);
+    src : url(../gilroy-font/Gilroy-Regular.ttf);
+    scroll-behavior: smooth;
+}
+
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(./pic/background1.png);
+    height: 1000px;
+    width: 100%;
+    
+}
+
+.kotak-gede{
+    margin-top: 100px;
+    margin-left: 50px;
+    background: rgba(185, 183, 183, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    width: 1400px;
+    padding-block: 3rem;
+    /* height: 800px; */
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.judul-1{
+    font-size: 47px;
+    font-weight: 600;
+}
+
+.judul-2{
+    font-size: 25px;
+}
+
+hr{
+    width: 80%;
+    background: rgba(243, 243, 243, 0.5);
+    border: solid 1px rgba(243, 243, 243, 0.5);
+    margin-top: 50px;
+    margin-left: 150px;
+}
+
+.content{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
+.form-label{
+    color: white;
+}
+
+/*contoh1*/
+/*support google chrome*/
+.form-control::-webkit-input-placeholder{
+	color: rgba(243, 243, 243, 0.5);
+}
+ 
+/*support mozilla*/
+.form-control:-moz-input-placeholder{
+	color: rgba(243, 243, 243, 0.5);
+}
+ 
+/*support internet explorer*/
+.form-control:-ms-input-placeholder{
+	color: rgba(243, 243, 243, 0.5);
+}
+
+.gambar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-control{
+    border-radius: 7px;
+    border: solid 4px #f79421;
+    background: transparent;
+    padding: 5px;
+}
+
+.date-dur{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+#movtra{
+    margin-top: 20px;
+}
+
+#desc{
+    margin-top: 20px;
+}
+
+.tombol{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tambah-1{
+    background-color: #f79421;
+    border: solid 4px transparent;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 25px;
+    padding: 8px;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-left: 180px;
+    margin-right: -140px;
+    text-decoration: none;
+    color: black;
+}
+
+.kembali-1{
+    color:#f79421;
+    border: solid 4px #f79421;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 25px;
+    padding: 8px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: -160px;
+    margin-right: 170px;
+    background-color: transparent;
+}
+
+.tambah-1:hover{
+    color: white;
+}
+
+a{
+    text-decoration: none !important;
+    color: #f79421 !important;
+}
+
+a:hover{
+    color:white !important;
+}

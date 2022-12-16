@@ -90,7 +90,7 @@ body{
 @endsection
 
 @section('searchbar')
-<form action="/search" method="get" class="w-75">
+<form action="{{route('admin.search')}}" method="get" class="w-75">
     <input class="form-control" type="text" placeholder="Search" name="q" aria-label="default input example">
 </form>
 @endsection
@@ -249,6 +249,8 @@ body{
       </div>
       @endif
   </div>
+
+  
 @endsection
 
 @section('footer')

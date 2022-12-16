@@ -19,8 +19,8 @@
                 background-image: url('/images/Mulan.png');
                 background-size: cover;
                 background-repeat: no-repeat;
-                overflow: hidden;
-                height: 100vh;
+                overflow-x: hidden;
+                margin-bottom: 20rem;
             }
             </style>
 

@@ -6,8 +6,14 @@
         width: 100%
     }
 
-    #home,
-    #movies,
+    #home {
+        height: 90vh;
+    }
+
+    #movies {
+        height: 110vh;
+    }
+
     #features {
         height: 100vh;
     }
@@ -42,8 +48,6 @@
     #home .content {
         width: 50%;
     }
-
-    #features .content {}
 
     #features {
         background-image: none;
@@ -94,21 +98,36 @@
         -webkit-transition: box-shadow .2s ease-in-out;
         cursor: pointer;
     }
+
+    .carousel-indicators {
+        height: 10px;
+    }
+
+    .carousel-indicators>button {
+        position: relative;
+        top: 40px;
+        height: 10px !important;
+        width: 10px !important;
+        border-radius: 100vmax !important;
+    }
 </style>
 
 @extends('layout')
 
 @section('content')
+    {{-- Home Section --}}
     <div id="home" class="container">
         <div class="content">
-            <h2 class="text-white fw-bold">Browse movies, see what people say, and give your opinions !</h2>
-            <div class="mt-3">
+            <h1 class="text-white fw-bold">Browse movies, see what people say, and give your opinions !</h1>
+            <div class="mt-5">
                 <a href="/register" class="btn btn-warning">Sign up</a>
                 <a href="/login" class="btn btn-outline-warning">Sign in</a>
             </div>
         </div>
     </div>
+    {{-- Home Section --}}
 
+    {{-- Features Section --}}
     <div id="features">
         <div class="content container pt-5">
             <h2 class="text-light text-center fw-bold">FEATURES</h2>
@@ -148,13 +167,74 @@
 
         </div>
     </div>
+    {{-- Features Section --}}
 
+    {{-- Movies Section --}}
     <div id="movies">
         <div class="content container pt-5">
             <h2 class="text-light text-center fw-bold">MOVIES</h2>
+            <p class="text-center" style="color: rgb(182, 182, 182)">FEATURED MOVIES THIS WEEK</p>
 
+            <div id="carouselExampleCaptions" class="carousel slide mt-5">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    @foreach ($banner as $b)
+                        @if ($loop->first)
+                            <div class="carousel-item active">
+                            @else
+                                <div class="carousel-item">
+                        @endif
+                        <div class="container-fluid g-0">
+                            <div class="container-fluid header"
+                                style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ $b->banner_url }});
+                                    background-repeat: no-repeat; background-size: cover; padding-top: 10vh; padding-bottom: 10vh; height:420px;">
+                                <div class="container header-detail ms-3 py-3">
+                                    <p class="fw-bold mb-0 fs-6"><span style="color: #FF9416;">NEWEST</span> &nbsp <span
+                                            class="text-white">UPDATE</span></p>
+                                    <h1 class="text-white">
+                                        @if (strlen($b->title) > 50)
+                                            {{ substr($b->title, 0, 50) }}...
+                                        @else
+                                            {{ $b->title }}
+                                        @endif
+                                    </h1>
+
+                                    <p class="text-white fs-6">
+                                        @if (strlen($b->synopsis) > 255)
+                                            {{ substr($b->synopsis, 0, 255) }}...
+                                        @else
+                                            {{ $b->synopsis }}
+                                        @endif
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                @endforeach
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
+    </div>
+    {{-- Movies Section --}}
 @endsection
 
 @section('footer')

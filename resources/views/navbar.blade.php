@@ -57,10 +57,17 @@
                             {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-light">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#profileModal">
+                                    Profile
+                                </button>
+                            </li>
+
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
+
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf
@@ -104,3 +111,36 @@
     </div>
 
 </nav>
+
+<!-- Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="profileModalLabel">Profile</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3 row">
+                    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputName" disabled
+                            value="{{ auth()->check() ? auth()->user()->name : '' }}">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" disabled
+                            value="{{ auth()->check() ? auth()->user()->email : '' }}">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Profile Modal -->

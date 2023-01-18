@@ -43,9 +43,8 @@
      </div>
 
       <div class="col-12 col-md-4 col-lg-3 fs-4 d-flex flex-column  justify-content-center align-items-center">
-        <a href="/home" class="text-white decoration-none" style="text-decoration: none;">Home</a>
-        <a href="#" class="text-white decoration-none" style="text-decoration: none;">Movies</a>
-        <a href="#" class="text-white decoration-none" style="text-decoration: none;">Trailer</a>
+        <a href="/" class="text-white decoration-none" style="text-decoration: none;">Home</a>
+        <a href="/home" class="text-white decoration-none" style="text-decoration: none;">Movies</a>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3 fs-4 d-flex flex-column justify-content-center align-items-start" style="padding-left:35px;">
@@ -58,12 +57,8 @@
         </div>
       </div>
 
-      <div class="col-6 col-md-4 col-lg-3 d-flex flex-column align-items-start footer-email-position">
-        <p class="text-white">Don’t forget to subscribe our mailing list to stay updated.</p>
-        <form action="" class="d-flex flex-column text-white">
-          <label for="footer-email" class="form-group-label">Email</label>
-          <input type="email" name="email" id="footer-email" class="form-group" placeholder="Type your email">
-        </form>
+      <div class="col-6 col-md-4 col-lg-3 d-flex align-items-center footer-email-position">
+        <p class="text-white">Don’t forget to always browse and rate movie at Cinemov.</p>
       </div>
     </div>
   </div>

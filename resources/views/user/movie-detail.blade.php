@@ -5,7 +5,30 @@
 @endsection
 
 @section('content')
-    <h1 class="text-white">Movie No: {{ $movie->id }}</h1>
+    @if (Session::has('message'))
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Hi, {{ auth()->user()->name }}!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ Session::get('message') }}
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.onload = (event) => {
+                let myAlert = document.querySelector('.toast');
+                let bsAlert = new bootstrap.Toast(myAlert);
+
+                bsAlert.show();
+            }
+        </script>
+    @endif
+
+    <h1 class="text-white">Movie: {{ $movie->title }}</h1>
 
     {{ $createButtonClicked = false; }}
     <!-- Button trigger modal -->
@@ -80,7 +103,7 @@
                                         @csrf
                                         @method('PATCH')
                                         <div class="modal-head">
-                                            <h1 class="modal-title fs-4" id="titleModal">Edit your comment here - {{ $comment->id }}</h1>
+                                            <h1 class="modal-title fs-4" id="titleModal">Edit your comment here</h1>
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-floating mb-3">

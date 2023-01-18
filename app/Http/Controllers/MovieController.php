@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $req)
     {
         if($req->q == null){
@@ -66,24 +62,6 @@ class MovieController extends Controller
         return view('user.movie-detail', $data);
     }
 
-    // public function search(Request $req)
-    // {
-    //     $movie = Movie::where('title', 'like', '%'.$req->q.'%')->paginate(8);
-
-    //     $data = [
-    //         'movie' => $movie,
-    //         'showBanner' => false
-    //     ];
-
-    //     return view('user.home', $data);
-    // }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function addMovie(Request $request)
     {
        
@@ -117,36 +95,17 @@ class MovieController extends Controller
         return redirect()->route('admin.home');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateMovieForm($id)
     {
         $movie = Movie::findorFail($id);
         return view('admin.update', compact('movie'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateMovieLogic(Request $request, $id)
     {
         
@@ -180,12 +139,6 @@ class MovieController extends Controller
         return redirect()->route('admin.movie-detail');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function deleteMovie($id)
     {
         Movie::destroy($id);

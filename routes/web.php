@@ -46,6 +46,10 @@ Route::middleware('admin')->group(function () {
         Route::get('/update/{id}', [MovieController::class, 'updateMovieForm'])->name('admin.update');
         Route::patch('/updating/{id}', [MovieController::class, 'updateMovieLogic'])->name('admin.updating');
         Route::delete('/delete/{id}', [MovieController::class, 'deleteMovie'])->name('admin.delete');
+
+        Route::get('/manage/user', [UserController::class, 'manageUser'])->name('admin.manage');
+        Route::get('/manage/user/search', [UserController::class, 'searchUser'])->name('admin.search.user');
+        Route::patch('/manage/user/{user_id}', [UserController::class, 'updateUserBan'])->name('admin.update.ban');
     });
 });
 
@@ -54,8 +58,8 @@ Route::middleware('user')->group(function () {
     Route::get('/home', [MovieController::class, 'index']);
     Route::get('/search', [MovieController::class, 'index']);
 
-    Route::prefix('/movie')->group(function () {
-        Route::get('/{movie_id}', [MovieController::class, 'movieDetail']);
+    Route::middleware('user.ban')->prefix('/movie')->group(function() {
+        Route::get('/{movie_id}', [MovieController::class, 'movieDetail'])->withoutMiddleware('user.ban');
         Route::post('/{movie_id}/comment', [CommentController::class, 'store'])->name('comment.store');
         Route::patch('/comment/{comment_id}', [CommentController::class, 'update'])->name('comment.update');
         Route::delete('/comment/{comment_id}', [CommentController::class, 'destroy'])->name('comment.destroy');

@@ -71,6 +71,10 @@ body{
 }
 /* Ini buat form comment */
 
+.noComment{
+    color: #f3f3f3;
+}
+
 .break{
     color: #f3f3f3;
 }

@@ -129,6 +129,9 @@
     {{-- This is for comment section, feel free to change it :D --}}
     <div>
         {{-- {{ dd($movie->comments) }} --}}
+        @php
+            $mark = 0
+        @endphp
         @foreach ($movie->comments as $comment)
             <div>
                 <div class="card-body">
@@ -200,7 +203,11 @@
                 </div>
                 <hr class="break"> 
             </div>
+            {{$mark++}}
         @endforeach
+        @if ($mark==0)
+            <h5 class="noComment">There is no comment yet...</h5>
+        @endif
     </div>
 @endsection
 

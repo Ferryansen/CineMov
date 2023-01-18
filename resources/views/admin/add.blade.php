@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="kotak-gede">
-        
+
         <div class="header">
             <div class="judul-1">
                 Add Movie
@@ -25,11 +25,11 @@
                 @error('movieImage')
                     <div class="invalid-feedback">
                         {{ $message }}
-                        
+
                     </div>
                 @enderror
 
-                
+
             </div>
             <div class="keterangan" style="width: 40%">
                 <div class="mb-3">
@@ -68,14 +68,14 @@
                             </div>
                             @enderror
                         </div>
-    
+
                         <div class="d-flex align-items-center">
-                           
+
                             <h5 style="color:#f79421; font-weight:600; margin-bottom:-15 !important;">Minutes</h5>
                         </div>
                     </div>
 
-                    
+
                 </div>
 
                 <div class="mb-3" id="movtra">
@@ -92,7 +92,7 @@
                 <div class="mb-3" id="desc">
                     <label for="exampleFormControlTextarea1" class="form-label">Synopsis<br></label>
                     <textarea class="form-control @error('movieSynopsis') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3" placeholder="Synopsis" name="movieSynopsis" autofocus
-                    value="{{ old('movieSynopsis') }}"></textarea>
+                    >{{ old('movieSynopsis') }}</textarea>
                     @error('movieSynopsis')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -110,15 +110,15 @@
                     </div>
                     @enderror
                 </div>
-                 
+
             </div>
-            
-            
+
+
         </div>
 
         <div class="tombol">
             <div class="tambah">
-                <button type="submit" class="tambah-1">
+                <button type="submit" class="tambah-1" onclick="addMovie()">
                     Add
                 </button>
             </div>
@@ -127,13 +127,17 @@
                     <a href="{{route('admin.home')}}">
                         Back
                     </a>
-                </button> 
+                </button>
             </div>
         </div>
 
     </form>
-        
-    
+    </div>
+
+    <div class="loading" id="loadingId">
+        <div class="kotak-gede pop-up">
+            <strong class="loading-text"> Loading... </strong>
+        </div>
     </div>
 
     <script>
@@ -145,8 +149,11 @@
             document.getElementById('movieImage').click();
         }
 
-
+        function addMovie(){
+            document.getElementById("loadingId").style.display = "block";
+            document.body.style.overflowY = "hidden";
+        }
     </script>
 @endsection
 
-    
+

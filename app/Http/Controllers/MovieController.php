@@ -65,6 +65,18 @@ class MovieController extends Controller
         return view('user.movie-detail', $data);
     }
 
+    public function adminMovieDetail($movie_id) {
+        $movie = Movie::findOrFail($movie_id);
+        $curr_user = auth()->user()->id;
+
+        $data = [
+            'movie' => $movie,
+            'currUser' => $curr_user
+        ];
+
+        return view('admin.movie-detail', $data);
+    }
+    
     public function addMovie(Request $request)
     {
 
@@ -108,10 +120,6 @@ class MovieController extends Controller
         return redirect()->route('admin.home');
     }
 
-    public function show($id)
-    {
-        //
-    }
 
     public function updateMovieForm($id)
     {
@@ -149,12 +157,16 @@ class MovieController extends Controller
             'synopsis' => $request->movieSynopsis
         ]);
 
-        return redirect()->route('admin.movie-detail');
+        return redirect()->route('admin.view');
     }
 
     public function deleteMovie($id)
     {
-        Movie::destroy($id);
-        return back();
+        // Movie::destroy($id);
+        $movies = Movie::findOrFail($id);
+        $movies->delete();
+
+        return redirect()->route('admin.view');
+        
     }
 }

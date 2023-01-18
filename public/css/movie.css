@@ -1,8 +1,109 @@
 
+body{
+    background-image: none;
+    background-color: #17120F;
+
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width: 100%;
+}
+
+.footer{
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+}
+
+.banner{
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.detail-content{
+    color: #f3f3f3; 
+}
+
+.detail-content span{
+    color: #ff9604; 
+}
+
+.detail-content .detail-1 .detail-12 .genre{
+    color: #9c9c9c; 
+}
+
+.detail-content .detail-1{
+    color: #f3f3f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-content .detail-1 .detail-12 div{
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+    margin-right: 20px;
+}
+.detail-content .detail-1 .detail-2{
+    align-items: center;
+    color: #17120F;
+    justify-content: space-between;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.detail-content .detail-1 .detail-2 div{
+    margin-right: 20px;
+    padding: 5px;
+    background-image: linear-gradient(#F7C283, #FFC107);
+    height: fit-content;
+    width: fit-content;
+}
+
+.adminbutton{
+    display: flex;
+    align-items: center;
+}
+
+.adminbutton a{
+   margin-right: 15px;
+}
 /* Ini buat form comment */
+
+.noComment{
+    color: #f3f3f3;
+}
+
+.break{
+    color: #f3f3f3;
+}
+.commentTitle{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #ff9604;
+}
+.komen{
+    color: rgb(255, 255, 255);
+}
+.card-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.commentButton{
+    display: flex;
+    align-items: center;
+}
+
+.commentButton button{
+    margin-right: 10px;
+}
+
 #titleModal {
     text-align: center;
-    color: #f3f3f3;
+    color: #a75555;
 
     margin-bottom: 15px;
 }

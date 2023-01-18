@@ -68,7 +68,7 @@ a:hover{
     <a href="{{ route('admin.view') }}">
     <div class="konten">
           <div class="isi-1">
-              View Movies
+              View, Update, Delete Movies
           </div>
           <div class="isi-2">
             Movie's Name, Poster, Banner, Synopsis, Rating, Duration, and Views.
@@ -85,14 +85,14 @@ a:hover{
           </div>
         </div>
     </a>
-      <div class="konten mb-96">
+      {{-- <div class="konten mb-96">
           <div class="isi-1">
               Update and Delete Movie
           </div>
           <div class="isi-2">
             Movie's Name, Poster, Banner, Synopsis, Rating, Duration, and Views.
           </div>
-      </div>
+      </div> --}}
   </div>
   <a href="{{ route('admin.manage') }}">
     <div class="konten">

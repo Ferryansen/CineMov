@@ -28,17 +28,57 @@
         </script>
     @endif
 
-    <h1 class="text-white">Movie: {{ $movie->title }}</h1>
+   
+     {{-- movie detail --}}
+    <img class= "banner container-fluid header" src="{{$movie->banner_url}}" alt="">
+    
+    
+    <h1 class="text-white">{{ $movie->title }}</h1>
+    <br>
+    <div class="detail-content">
+        <div class="detail-1"> 
+            <div class="detail-12">
+                <div>
+                    <h5><span>New Release</span> 2021</h5>
+                </div>
 
-    {{ $createButtonClicked = false; }}
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" id="commentButton" data-bs-toggle="modal" data-bs-target="#commentModal">
-        @if (count($errors) > 0)
-            Re-Comment
-        @else
-            Comment
-        @endif
-    </button>
+                <div class="genre">
+                     <h6>@foreach ($movie->genres as $g)
+                        @if($loop->first)
+                            {{$g->name}}
+                        @else
+                             • {{$g->name}}
+                        @endif
+                    @endforeach</h6>
+                </div>
+
+                <div class="detail-2">
+                    <div>
+                        <i class="fw-bold fa-solid fa-user p-1 fs-6"></i>{{$movie->viewCount}}
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-star p-1 fs-6"></i>{{$movie->rating}}
+                    </div>  
+                </div>
+            </div>
+
+
+            {{ $createButtonClicked = false; }}
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" id="commentButton" data-bs-toggle="modal" data-bs-target="#commentModal">
+                @if (count($errors) > 0)
+                    Re-Comment
+                @else
+                    Comment
+                @endif
+            </button>
+        </div>
+
+         <br>
+        <p class = "desc">{{$movie->synopsis}}</p>
+    </div>
+    
     
     <!-- Modal -->
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,19 +121,32 @@
         </div>
     </div>
 
+    <br><br>
+    <h2 class="commentTitle">Comments</h2>
+    <HR class="break">
     {{-- This is for comment section, feel free to change it :D --}}
     <div>
         {{-- {{ dd($movie->comments) }} --}}
+        @php
+            $mark = 0
+        @endphp
         @foreach ($movie->comments as $comment)
-            <div class="card" style="width: 18rem;">
+            <div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ $comment->user->name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Rate: {{ $comment->rating }}</h6>
-                    <p class="card-text">{{ $comment->description }}</p>
-                    @if ($comment->user_id == $currUser)
+
+                    <div class="komen">
+                        <h5 class="card-title">{{ $comment->user->name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Rate: {{ $comment->rating }}</h6>
+                        <p class="card-text">{{ $comment->description }}</p>
+                    </div>
+                   
+                   <div class = "commentButton">
+                        @if ($comment->user_id == $currUser)
                         <button type="button" class="btn btn-warning" id="updateCommentButton" data-bs-toggle="modal" data-bs-target="#updateCommentModal-{{ $comment->id }}">
                             Edit
                         </button>
+
+
                         
                         <!-- Modal -->
                         <div class="modal fade" id="updateCommentModal-{{ $comment->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -142,8 +195,22 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     @endif
+                    
+                   </div> 
+                   
                 </div>
+                <hr class="break"> 
             </div>
+            {{$mark++}}
         @endforeach
+        @if ($mark==0)
+            <h5 class="noComment">There is no comment yet...</h5>
+        @endif
+    </div>
+@endsection
+
+@section('footer')
+    <div class="d-flex justify-content-center align-items-center bottom-0">
+        @include('footer')
     </div>
 @endsection

@@ -11,7 +11,7 @@
     }
 
     #user-card {
-        margin: 0 10px 10px 0;
+        margin: 0 12px 10px 0;
 
         background: linear-gradient(146.53deg, rgba(243, 243, 243, 0.4) -10.26%, rgba(243, 243, 243, 0.04) 84.29%);
         backdrop-filter: blur(30px);

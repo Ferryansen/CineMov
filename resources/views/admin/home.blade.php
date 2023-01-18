@@ -33,6 +33,7 @@
     padding-right: 170px;
     color: white;
     margin: 30px;
+    width: 80rem;
 }
 
 .konten:hover {
@@ -85,23 +86,16 @@ a:hover{
           </div>
         </div>
     </a>
-      {{-- <div class="konten mb-96">
-          <div class="isi-1">
-              Update and Delete Movie
+      
+      <a href="{{ route('admin.manage') }}">
+        <div class="konten">
+            <div class="isi-1">
+                Manage Users
+            </div>
+            <div class="isi-2">
+                User's Status
+            </div>
           </div>
-          <div class="isi-2">
-            Movie's Name, Poster, Banner, Synopsis, Rating, Duration, and Views.
-          </div>
-      </div> --}}
+      </a>
   </div>
-  <a href="{{ route('admin.manage') }}">
-    <div class="konten">
-        <div class="isi-1">
-            Manage Users
-        </div>
-        <div class="isi-2">
-            User's status
-        </div>
-      </div>
-  </a>
 @endsection

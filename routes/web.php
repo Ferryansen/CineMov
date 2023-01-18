@@ -39,10 +39,10 @@ Route::middleware('admin')->group(function () {
             return view('admin.home');
         })->name('admin.home');
         Route::get('/view', [MovieController::class, 'indexAdmin'])->name('admin.view');
-        Route::get('/{movie_id}', [MovieController::class, 'AdminMovieDetail'])->name('admin.movie.detail');
         Route::get('/add', function () {
             return view('admin.add');
         })->name('admin.add');
+        Route::get('/{movie_id}', [MovieController::class, 'AdminMovieDetail'])->name('admin.movie.detail');
         Route::post('/createMovie', [MovieController::class, 'addMovie'])->name('admin.createMovie');
         Route::get('/search', [MovieController::class, 'indexAdmin'])->name('admin.search');
         Route::get('/update/{id}', [MovieController::class, 'updateMovieForm'])->name('admin.update');

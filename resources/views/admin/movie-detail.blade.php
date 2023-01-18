@@ -30,57 +30,57 @@
 
    
      {{-- movie detail --}}
-    <img class= "banner container-fluid header" src="{{$movie->banner_url}}" alt="">
-    
-    
-    <h1 class="text-white">{{ $movie->title }}</h1>
-    <br>
-    <div class="detail-content">
-        <div class="detail-1"> 
-            <div class="detail-12">
-                <div>
-                    <h5><span>New Release</span> 2021</h5>
-                </div>
 
-                <div class="genre">
-                     <h6>@foreach ($movie->genres as $g)
-                        @if($loop->first)
-                            {{$g->name}}
-                        @else
-                             • {{$g->name}}
-                        @endif
-                    @endforeach</h6>
-                </div>
-
-                <div class="detail-2">
+    <img class= "banner container-fluid header" style="height: 500px;" src="{{$movie->banner_url}}" alt="">
+    
+        <h1 class="text-white">{{ $movie->title }}</h1>
+        <br>
+        <div class="detail-content">
+            <div class="detail-1"> 
+                <div class="detail-12">
                     <div>
-                        <i class="fw-bold fa-solid fa-user p-1 fs-6"></i>{{$movie->viewCount}}
+                        <h5><span>New Release</span> 2021</h5>
                     </div>
-                    <div>
-                        <i class="fa-solid fa-star p-1 fs-6"></i>{{$movie->rating}}
-                    </div>  
+                    
+                    <div class="genre">
+                        <h6>@foreach ($movie->genres as $g)
+                            @if($loop->first)
+                            {{$g->name}}
+                            @else
+                            • {{$g->name}}
+                            @endif
+                            @endforeach</h6>
+                        </div>
+                        
+                        <div class="detail-2">
+                            <div>
+                                <i class="fw-bold fa-solid fa-user p-1 fs-6"></i>{{$movie->viewCount}}
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-star p-1 fs-6"></i>{{$movie->rating}}
+                            </div>  
+                        </div>
+                    </div>
+
+                    <div class ="adminbutton">
+                        <a href="{{route('admin.update', ['id' => $movie->id])}}" role="button" class="btn btn-warning ">
+                            Update
+                        </a>
+                        
+                        <form action="{{route('admin.delete', ['id' => $movie->id])}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                        
+                    </div>
                 </div>
-            </div>
-
-            <div class ="adminbutton">
-                <a href="{{route('admin.update', ['id' => $movie->id])}}" role="button" class="btn btn-warning ">
-                    Update
-                </a>
                 
-                <form action="{{route('admin.delete', ['id' => $movie->id])}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger">Delete</button>
-                </form>
-
+                <br>
+                <p class = "desc">{{$movie->synopsis}}</p>
             </div>
-        </div>
-
-         <br>
-        <p class = "desc">{{$movie->synopsis}}</p>
-    </div>
-
-
+            
+            
 @endsection
 
 @section('footer')

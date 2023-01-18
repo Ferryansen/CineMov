@@ -30,7 +30,7 @@
 
    
      {{-- movie detail --}}
-    <img class= "banner container-fluid header" src="{{$movie->banner_url}}" alt="">
+    <img class= "banner container-fluid header" style="height: 500px;" src="{{$movie->banner_url}}" alt="">
     
     
     <h1 class="text-white">{{ $movie->title }}</h1>

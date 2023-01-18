@@ -94,4 +94,14 @@ a:hover{
           </div>
       </div>
   </div>
+  <a href="{{ route('admin.manage') }}">
+    <div class="konten">
+        <div class="isi-1">
+            Manage Users
+        </div>
+        <div class="isi-2">
+            User's status
+        </div>
+      </div>
+  </a>
 @endsection

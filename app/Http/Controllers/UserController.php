@@ -2,83 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('user.home');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function manageUser() 
     {
-        //
+        $users = User::where('role', 'user')->orderBy('name')->get();
+
+        return view('admin.manage-user', compact('users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function searchUser(Request $req)
     {
-        //
+        $input = $req->q;
+        if ($input == "ban" || $input == "banned") {
+            $users = User::where([
+                    ['role', 'user'],
+                    ['isBanned', 1]
+                ])->get();
+        } else {
+            $users = User::where([
+                    ['name', 'like', '%'.$req->q.'%'],
+                    ['role', 'user']
+                ])->get();
+        }
+
+        return view('admin.manage-user', compact('users'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function updateUserBan(Request $req, $user_id)
     {
-        //
+        $user = User::findOrFail($user_id);
+        if ($req->isBan == 0) {
+            $user->isBanned = 0;
+        } else {
+            $user->isBanned = 1;
+        }
+
+        $user->save();
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

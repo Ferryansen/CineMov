@@ -46,6 +46,7 @@
       <div class="col d-flex flex-column  justify-content-center align-items-center" style="margin-inline: 10rem;">
         <a href="/home" class="text-white decoration-none" style="text-decoration: none;">Home</a>
         <a href="#" class="text-white decoration-none" style="text-decoration: none;">Movies</a>
+      </div>
 
       
 

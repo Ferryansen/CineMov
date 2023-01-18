@@ -79,8 +79,6 @@
         <p class = "desc">{{$movie->synopsis}}</p>
     </div>
     
-
-   
     
     <!-- Modal -->
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

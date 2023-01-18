@@ -13,7 +13,7 @@ body{
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(./pic/background1.png);
     height: 1000px;
     width: 100%;
-    
+
 }
 
 .kotak-gede{
@@ -68,12 +68,12 @@ hr{
 .form-control::-webkit-input-placeholder{
 	color: rgba(243, 243, 243, 0.5);
 }
- 
+
 /*support mozilla*/
 .form-control:-moz-input-placeholder{
 	color: rgba(243, 243, 243, 0.5);
 }
- 
+
 /*support internet explorer*/
 .form-control:-ms-input-placeholder{
 	color: rgba(243, 243, 243, 0.5);
@@ -154,4 +154,42 @@ a{
 
 a:hover{
     color:white !important;
+}
+
+.loading{
+    display: none;
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+    background:rgba(255,255,255,0.5);
+}
+
+.pop-up{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+
+    height: 400px;
+    margin-top: -200px;
+
+    width: 600px;
+    margin-left: -300px;
+
+    color: white;
+}
+
+.loading-text{
+    font-size: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

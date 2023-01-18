@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\movieNotificationMail;
 use App\Models\Movie;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $req)
     {
         if($req->q == null){
@@ -77,28 +76,10 @@ class MovieController extends Controller
 
         return view('admin.movie-detail', $data);
     }
-
-    // public function search(Request $req)
-    // {
-    //     $movie = Movie::where('title', 'like', '%'.$req->q.'%')->paginate(8);
-
-    //     $data = [
-    //         'movie' => $movie,
-    //         'showBanner' => false
-    //     ];
-
-    //     return view('user.home', $data);
-    // }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function addMovie(Request $request)
     {
-       
+
         $request->validate([
             'movieName' => 'required',
             'movieDuration' => 'required|numeric|min:20',
@@ -116,7 +97,7 @@ class MovieController extends Controller
 
         $imageUrl = Storage::disk('public')->putFileAs('ListImage', $file, $filename);
 
-        Movie::create([
+        $movie = Movie::create([
             'title' => $request->movieName,
             'duration' => $request->movieDuration,
             'poster_url'=> $imageUrl,
@@ -126,42 +107,29 @@ class MovieController extends Controller
             'synopsis' => $request->movieSynopsis
         ]);
 
+        $user = User::where('role', 'user')->where('isBanned', '0')->get();
+        foreach ($user as $u) {
+            $to_email = $u->email;
+            $data = array('name'=>$u->name, "movie" => $movie);
+            Mail::send('mail', $data, function($message) use ($to_email) {
+                $message->to($to_email)
+                ->subject('Cinemov Newest Movie Has Arrived');
+                $message->from(env('MAIL_FROM_ADDRESS'),env('MAIL_FROM_NAME'));
+        });
+        }
         return redirect()->route('admin.home');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateMovieForm($id)
     {
         $movie = Movie::findorFail($id);
         return view('admin.update', compact('movie'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateMovieLogic(Request $request, $id)
     {
-        
+
         $request->validate([
             'movieName' => 'required',
             'movieDuration' => 'required|numeric|min:20',
@@ -192,12 +160,6 @@ class MovieController extends Controller
         return redirect()->route('admin.view');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function deleteMovie($id)
     {
         // Movie::destroy($id);

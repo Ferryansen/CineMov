@@ -19,7 +19,7 @@
     <br>
 
     <div class="border">
-        <img src="{{$movie->banner_url}}" alt="">
+        <img src="{{$movie->banner_url}}" alt="" style="width:500px">
         <h1>{{$movie->title}}</h1>
         <p>Duration: {{$movie->duration}}</p>
         <p>Rating: {{$movie->rating}}</p>

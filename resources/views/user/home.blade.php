@@ -124,7 +124,6 @@ body{
                         @endif
                     </h1>
                       <div class="d-flex justify-content-start align-items-center">
-                        {{-- <a role="button" class="bg-gradient-gray text-white rounded-pill px-3 py-1 fw-bold mx-1 fs-6 text-decoration-none pe-auto">TRAILER</a> --}}
                         <a href = "{{route('movie.detail', ['movie_id' => $b->id])}}" role="button" class="bg-gradient-primary text-white rounded-pill px-3 py-1 fw-bold mx-1 fs-6 text-decoration-none pe-auto">DETAILS</a>
                       </div>
                       <p class="text-white fs-6">

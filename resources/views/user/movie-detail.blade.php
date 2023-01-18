@@ -28,15 +28,15 @@
         </script>
     @endif
 
-   
+
      {{-- movie detail --}}
+
     <img class= "banner container-fluid header" style="height: 500px;" src="{{$movie->banner_url}}" alt="">
-    
     
     <h1 class="text-white">{{ $movie->title }}</h1>
     <br>
     <div class="detail-content">
-        <div class="detail-1"> 
+        <div class="detail-1">
             <div class="detail-12">
                 <div>
                     <h5><span>New Release</span> 2021</h5>
@@ -58,7 +58,7 @@
                     </div>
                     <div>
                         <i class="fa-solid fa-star p-1 fs-6"></i>{{$movie->rating}}
-                    </div>  
+                    </div>
                 </div>
             </div>
 
@@ -78,8 +78,8 @@
          <br>
         <p class = "desc">{{$movie->synopsis}}</p>
     </div>
-    
-    
+
+
     <!-- Modal -->
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -112,7 +112,7 @@
                             @enderror
                         </div>
                     </div>
-                    
+
                     <div class="modal-footer border-0">
                         <button type="submit" class="w-100 btn btn-md btn-warning">Post Comment</button>
                     </div>
@@ -139,7 +139,7 @@
                         <h6 class="card-subtitle mb-2 text-muted">Rate: {{ $comment->rating }}</h6>
                         <p class="card-text">{{ $comment->description }}</p>
                     </div>
-                   
+
                    <div class = "commentButton">
                         @if ($comment->user_id == $currUser)
                         <button type="button" class="btn btn-warning" id="updateCommentButton" data-bs-toggle="modal" data-bs-target="#updateCommentModal-{{ $comment->id }}">
@@ -147,7 +147,7 @@
                         </button>
 
 
-                        
+
                         <!-- Modal -->
                         <div class="modal fade" id="updateCommentModal-{{ $comment->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -173,7 +173,7 @@
                                             <div class="form-floating mb-3">
                                                 <textarea name="description" class="form-control text-warning bg-transparent @error('description') is-invalid @enderror" placeholder="Tells us more about the movie" id="floatingTextarea">{{ $comment->description }}</textarea>
                                                 <label for="description" class="text-warning">Comment</label>
-                    
+
                                                 @error('description')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -181,7 +181,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        
+
                                         <div class="modal-footer border-0">
                                             <button type="submit" class="w-100 btn btn-md btn-warning">Update Comment</button>
                                         </div>
@@ -195,13 +195,15 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     @endif
-                    
-                   </div> 
-                   
+
+                   </div>
+
                 </div>
-                <hr class="break"> 
+                <hr class="break">
             </div>
-            {{$mark++}}
+            <div class="d-none">
+                {{$mark++}}
+            </div>
         @endforeach
         @if ($mark==0)
             <h5 class="noComment">There is no comment yet...</h5>

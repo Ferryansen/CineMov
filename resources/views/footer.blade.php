@@ -42,10 +42,12 @@
         </a>
      </div>
 
+
       <div class="col d-flex flex-column  justify-content-center align-items-center" style="margin-inline: 10rem;">
         <a href="/home" class="text-white decoration-none" style="text-decoration: none;">Home</a>
         <a href="#" class="text-white decoration-none" style="text-decoration: none;">Movies</a>
-      </div>
+
+      
 
       <div class="col d-flex flex-column justify-content-center align-items-start" style="padding-left:35px;">
         <div class="text-white">Contact us</div>
@@ -57,12 +59,8 @@
         </div>
       </div>
 
-      {{-- <div class="col-6 col-md-4 col-lg-3 d-flex flex-column align-items-start footer-email-position"> --}}
-        {{-- <p class="text-white">Don’t forget to subscribe our mailing list to stay updated.</p>
-        <form action="" class="d-flex flex-column text-white">
-          <label for="footer-email" class="form-group-label">Email</label>
-          <input type="email" name="email" id="footer-email" class="form-group" placeholder="Type your email">
-        </form> --}}
-      {{-- </div> --}}
+
+
+
     </div>
   </div>
